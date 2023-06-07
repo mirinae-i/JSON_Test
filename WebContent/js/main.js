@@ -6,22 +6,23 @@ function execute() {
         dataType: 'text',
         data: {},
         success: function (data, textStatus) {
-            alert(data);
+            // alert(data);
             let info = JSON.parse(data);
-            let output = '<h2>회원 정보</h2><hr />';
+            let output = '<table><tr>' + '<td>ID</td><td>Password</td><td>이름</td><td>나이</td>' + '</tr>';
             for (let i in info.members) {
-                output += '<p>' + 'ID: ' + info.members[i].id + '</p>';
-                output += '<p>' + 'Password: ' + info.members[i].pw + '</p>';
-                output += '<p>' + '이름: ' + info.members[i].name + '</p>';
-                output += '<p>' + '나이: ' + info.members[i].age + '</p>';
+                output += '<tr><td>' + info.members[i].id + '</td>';
+                output += '<td>' + info.members[i].pw + '</td>';
+                output += '<td>' + info.members[i].name + '</td>';
+                output += '<td>' + info.members[i].age + '</td></tr>';
             }
+            output += '</table>';
             $('#showlist').html(output);
         },
         error: function (data, textStatus) {
             alert('Error!');
         },
         complete: function (data, textStatus) {
-            alert('Complete!');
+            // alert('Complete!');
         },
     });
 }
